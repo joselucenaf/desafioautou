@@ -8,6 +8,7 @@ from app.nlp.responder import generate_response
 
 app = FastAPI(title="Email Classification API")
 
+                        #Conexao entre back e front 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -19,7 +20,6 @@ app.add_middleware(
 def process_logic(text: str):
     classificacao = classify_email(text) 
     
-    # Geração de resposta baseada na categoria
     resposta = generate_response(text, classificacao["categoria"])
 
     return {
@@ -40,7 +40,7 @@ async def analyze_file(file: UploadFile = File(...)):
     print(f"Arquivo recebido: {file.filename}")
     print(f"Tamanho lido: {len(file_bytes)} bytes")
 
-    try:
+    try:                            #Extração de textos dos uploads
         if file.filename.endswith(".txt"):
             content = file_bytes.decode("utf-8")
         
@@ -56,6 +56,8 @@ async def analyze_file(file: UploadFile = File(...)):
         
         else:
             raise HTTPException(status_code=400, detail="Formato não suportado. Use .txt ou .pdf")
+        
+                #Tratamento de erro
 
     except Exception as e:
         print(f"ERRO NA LEITURA: {str(e)}")

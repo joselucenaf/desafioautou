@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', () => {
         analyzeBtn.disabled = true;
 
         try {
-            let response;
-            
+            let response;           /*Polimorfismo de requisicao */
+                                    /*Decisao do front para enviar o texto ou o upload */
             if (isFileMode) {
                 const formData = new FormData();
                 formData.append('file', fileInput.files[0]);

@@ -5,13 +5,15 @@ classifier = pipeline(
     "zero-shot-classification",
     model="facebook/bart-large-mnli"
 )
-
+                    #Usei algumas palavras chaves para que a IA consiga captar melhor e classificar 
+                    #Se fosse um modelo de CNN, era só treinar a rede e não precisaria repassar essas palavras
 LABELS_MAP = {
     "solicitação de serviço, problema financeiro, boleto, segunda via, suporte técnico ou dúvida": "Produtivo",
     "apenas agradecimento, apenas saudação, elogio sem pedido ou conversa informal": "Improdutivo"
 }
 
 def classify_email(text: str) -> dict:
+            #Compara o conteúdo dos emails com as labels, retornando a categoria
 
     result = classifier(text, list(LABELS_MAP.keys()))
 

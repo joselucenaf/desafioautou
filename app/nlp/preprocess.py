@@ -2,7 +2,7 @@ import re
 import nltk
 from nltk.corpus import stopwords
 
-
+            #Restriçoes lexicas, normalizaçao
 nltk.download('stopwords', quiet=True)
 STOP_WORDS = set(stopwords.words('portuguese'))
 
