@@ -1,8 +1,4 @@
 def generate_response(email_text: str, categoria: str) -> str:
-    """
-    Gera uma resposta automática segura e corporativa
-    baseada na categoria do email.
-    """
 
     if categoria == "Produtivo":
         return (
